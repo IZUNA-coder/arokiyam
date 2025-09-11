@@ -1,0 +1,336 @@
+{
+  "__lang": "fr",
+  "nav": {
+    "home": "Accueil",
+    "team": "Équipe",
+    "speakers": "Intervenant.e.s",
+    "events": "Événements",
+    "resources": "Ressources",
+    "program": "Programme",
+    "contact": "Contact",
+    "social": "Réseaux"
+  },
+  "hero": {
+    "title": "Bienvenue sur le site d'Arokiyam pour toustes",
+    "subtitle": "Association dédiée à la solidarité, l'entraide et l'inclusion.",
+    "tagline": "“Arokiyam” signifie santé en tamoul — ஆரோக்கியம் (arōkiyam)."
+  },
+  "team": {
+    "title": "Équipe",
+    "subtitle": "Ensemble, pour la santé et la solidarité — ஆரோக்கியம் 🌿",
+    "slide1": {
+      "name": "Soubattra Danasségarane",
+      "role": "Professeure de philosophie, artiste, doctorante",
+      "desc": "Professeure de philosophie et artiste, actuellement doctorante en philosophie du langage et de l’identité. Survivante d’un cancer de l’estomac, elle s’engage à briser les tabous liés à cette maladie, notamment dans la communauté tamoule. Elle utilise l’art (bandes dessinées, expositions) pour donner de la visibilité aux parcours de personnes vulnérables et mettre en valeur les aînés trop souvent oubliés."
+    },
+    "slide2": {
+      "name": "Roshan Gnaneswaran",
+      "role": "Bachelor en informatique",
+      "desc": "Diplômé en informatique, Roshan a rejoint l’équipe d’Arokiyam par conviction. Il pense que l’accès à l’information sur la santé est un enjeu essentiel dans la communauté tamoule et croit qu’une meilleure sensibilisation peut entraîner un véritable changement."
+    },
+    "slide3": {
+      "name": "Nirusha Natkunarajah",
+      "role": "Étudiante en droit international, militante",
+      "desc": "Étudiante en droit international, Nirusha se définit comme militante. Elle a rejoint ce projet car elle estime qu’il est de son devoir de protéger et informer les aînés tamouls sur leurs droits en santé. Elle souhaite mettre en lumière les enjeux souvent négligés dans le système de santé concernant la communauté."
+    },
+    "slide4": {
+      "name": "Larissa Nithyanandan Patrick",
+      "role": "Étudiante en 6ᵉ année de pharmacie",
+      "desc": "Étudiante en pharmacie, Larissa s’engage à rendre les soins accessibles et compréhensibles. À travers ses activités de sensibilisation dans la communauté tamoule, elle a constaté l’importance d’une communication claire pour prévenir les peurs et retards de soins."
+    },
+    "slide5": {
+      "name": "Viwayga Pudkarananthan",
+      "role": "Ingénieure en dispositifs médicaux",
+      "desc": "Ingénieure en dispositifs médicaux, Viwayga s’engage à concevoir des solutions inclusives. Elle participe à ce projet pour aider les aînés à mieux comprendre leur santé et briser les tabous dans la communauté."
+    },
+    "slide6": {
+      "name": "Suvetha Suthan",
+      "role": "Étudiante en sciences politiques (spécialisation en conflits)",
+      "desc": "Étudiante en sciences politiques spécialisée dans les conflits, Suvetha veut garantir l’accès aux soins pour toutes les communautés, notamment celles discriminées. Elle s’intéresse aussi au lien entre douleur physique et santé mentale."
+    },
+    "slide7": {
+      "name": "Thinesh Thanabalasingam",
+      "role": "Étudiant en direction artistique, réalisateur, photographe",
+      "desc": "Étudiant en direction artistique, Thinesh est aussi réalisateur et photographe. Il participe au projet pour des raisons personnelles, convaincu que la créativité et l’action communautaire sont des leviers puissants pour la santé."
+    },
+    "slide8": {
+      "name": "Abisana Uthayakumar",
+      "role": "Étudiante en gestion de l’innovation sociale, éducatrice spécialisée",
+      "desc": "Étudiante en gestion de l’innovation sociale et éducatrice spécialisée, Abisana a constaté le manque de sensibilisation à la santé dans sa communauté. Son expérience dans l’aide à l’enfance et aux adultes tamouls lui a montré les conséquences de la négligence sanitaire."
+    },
+    "slide9": {
+      "name": "Thulaciga Yoganathan",
+      "role": "Chercheuse en maladies cardiovasculaires, fondatrice Arokiyam",
+      "desc": "Chercheuse en maladies cardiovasculaires liées au vieillissement, Thulaciga a constaté les inégalités d’accès aux soins, notamment pour les femmes. Elle a fondé Arokiyam pour tous.tes et la Journée Santé Tamoule pour réduire ces écarts."
+    }
+  },
+  "events": {
+    "title": "Événements",
+    "subtitle": "Retrouvez nos actions de sensibilisation et nos rencontres.",
+    "date": {
+      "label": "Date:"
+    },
+    "place": {
+      "label": "Lieu:"
+    },
+    "mapLink": "Voir sur Google Maps",
+    "program": {
+      "button": "Voir le programme de la journée"
+    },
+    "healthTamil": {
+      "title": "Journée de sensibilisation à la santé tamil",
+      "date": "Lundi 13 septembre",
+      "place": "Mairie de Bobigny"
+    }
+  },
+  "resources": {
+    "title": "Ressources",
+    "subtitle": "Livret d'information et documents utiles.",
+    "bookletTitle": "Livret d'information santé",
+    "bookletDesc": "Consultez notre livret de sensibilisation (versions PDF).",
+    "viewer": {
+      "open": "Ouvrir le livret",
+      "download": "Télécharger (PDF)",
+      "title": "Lecteur du livret",
+      "openTab": "Ouvrir"
+    }
+  },
+  "program": {
+    "title": "Programme de la journée",
+    "subtitle": "Détails des sessions (FR • EN • தமிழ்).",
+    "header": {
+      "title": "Programme de la Journée de Sensibilisation à la Santé dans la Communauté Tamoule",
+      "meta": "Organisée par Arokiyam Pour Tous.tes et la Mairie de Bobigny — Samedi 13 Septembre 2025 — Salon d'honneur, Mairie de Bobigny"
+    },
+    "labels": {
+      "speakers": "Intervenant.e.s"
+    },
+    "showAll": "Voir tout le programme",
+    "showLess": "Réduire",
+    "items": [
+      {
+        "time": "9h00 - 9h15",
+        "title": "Accueil et Introduction",
+        "content": "Présentation de l'initiative, des objectifs et des thématiques (cancer, maladies cardiovasculaires, droits en santé). Importance de la prévention dans la communauté tamoule.",
+        "speakers": "Équipe Arokiyam, Mairie de Bobigny (Madame Blandine François, Monsieur Ranjith Singh)"
+      },
+      {
+        "time": "9h15 - 10h15",
+        "title": "Atelier - Sucre et Diabète",
+        "content": "Sensibilisation type 2, glycémie, prises de sang préventives, interprétation et conseils adaptés à l'alimentation tamoule.",
+        "speakers": "Viwayga Pudkarananthan, Larissa Patrick Nithyanandan"
+      },
+      {
+        "time": "10h15 - 11h45",
+        "title": "Conférence - Cœur en Santé",
+        "content": "Définition des maladies cardiovasculaires, symptômes spécifiques (sexe biologique, population sud-asiatique), facteurs de risque (diabète).",
+        "speakers": "Professeur Bertrand Tavitian, Docteure Thulaciga Yoganathan, équipe TARMS Canada (Docteure Saakethiya Sriranjan, Docteur Tharsan Kanagalingam), Docteur Maharajah Ponnaiah, Christian Thomas (Association des Patients Diabétiques IDF-93), Judith Dumoulin (Infirmière en pratique avancée spécialisée en diabète)"
+      },
+      {
+        "time": "11h45 - 12h00",
+        "title": "Pause et Exposition de portraits",
+        "content": "Exposition \"Udalin Payanam : Engal Kuralkal\" (Le voyage du corps : nos voix).",
+        "speakers": "Soubattra Danasségarane, Abisana Uthayakumar"
+      },
+      {
+        "time": "12h00 - 13h15",
+        "title": "Pause déjeuner",
+        "content": "—",
+        "speakers": "—"
+      },
+      {
+        "time": "13h15 - 14h15",
+        "title": "Atelier - Cuisine Ayurvédique",
+        "content": "Rituels de cuisine ayurvédique pour la santé au quotidien.",
+        "speakers": "Archcena Nagalingam"
+      },
+      {
+        "time": "14h20 - 15h45",
+        "title": "Conférence - Signes avant-coureurs d'un cancer",
+        "content": "Symptômes (sein, digestif), démystification de la chimiothérapie, témoignages.",
+        "speakers": "Docteure Rajeshwari Ayyar (Californie), Soubattra Danasségarane, Vidya Balasubramanian"
+      },
+      {
+        "time": "15h45 - 16h45",
+        "title": "Atelier - Gestes de prévention du cancer",
+        "content": "Autopalpation sein et usage du kit de dépistage colorectal.",
+        "speakers": "Larissa Patrick Nithyanandan, Docteure Thulaciga Yoganathan"
+      },
+      {
+        "time": "16h45 - 17h15",
+        "title": "Pause goûter",
+        "content": "Dégustation d'alternatives.",
+        "speakers": "Viwayga Pudkarananthan"
+      },
+      {
+        "time": "17h15 - 18h45",
+        "title": "Conférence - Droit en Santé",
+        "content": "Accès aux soins, obstacles, inégalités, discriminations, moyens d'action, infos utiles (Bobigny/Paris).",
+        "speakers": "Sabah Jaroof, Nirusha Natkunarajah, Larissa Patrick Nithyanandan"
+      },
+      {
+        "time": "18h45 - 19h00",
+        "title": "Clôture",
+        "content": "Remerciements et prochaines actions. Traduction FR/TA: Anamiga Joseph. Captation: Thinesh Thanabalasingam.",
+        "speakers": "Équipe d'organisation, Mairie"
+      }
+    ]
+  },
+  "speakersSection": {
+    "title": "Intervenant.e.s",
+    "subtitle": "Les intervenant.e.s et partenaires de la journée.",
+    "list": [
+      {
+        "id": "tavitian",
+        "name": "Professeur Bertrand Tavitian",
+        "role": "Professeur de médecine"
+      },
+      {
+        "id": "thulaciga",
+        "name": "Docteure Thulaciga Yoganathan",
+        "role": "Médecin"
+      },
+      {
+        "id": "saakethiya",
+        "name": "Docteure Saakethiya Sriranjan",
+        "role": "Médecin (TARMS Canada)"
+      },
+      {
+        "id": "tharsan",
+        "name": "Docteur Tharsan Kanagalingam",
+        "role": "Médecin (TARMS Canada)"
+      },
+      {
+        "id": "maharajah",
+        "name": "Docteur Maharajah Ponnaiah",
+        "role": "Médecin"
+      },
+      {
+        "id": "christian",
+        "name": "Christian Thomas",
+        "role": "Association Patients Diabétiques IDF-93"
+      },
+      {
+        "id": "judith",
+        "name": "Judith Dumoulin",
+        "role": "Infirmière IPA (diabète)"
+      },
+      {
+        "id": "viwayga",
+        "name": "Viwayga Pudkarananthan",
+        "role": "Éducatrice santé"
+      },
+      {
+        "id": "larissa",
+        "name": "Larissa Patrick Nithyanandan",
+        "role": "Éducatrice santé"
+      },
+      {
+        "id": "archcena",
+        "name": "Archcena Nagalingam",
+        "role": "Animatrice atelier cuisine"
+      },
+      {
+        "id": "rajeshwari",
+        "name": "Docteure Rajeshwari Ayyar",
+        "role": "Médecin"
+      },
+      {
+        "id": "vidya",
+        "name": "Vidya Balasubramanian",
+        "role": "Témoignage"
+      },
+      {
+        "id": "sabah",
+        "name": "Sabah Jaroof",
+        "role": "Droits en santé"
+      },
+      {
+        "id": "nirusha",
+        "name": "Nirusha Natkunarajah",
+        "role": "Étudiante santé publique"
+      },
+      {
+        "id": "soubattra",
+        "name": "Soubattra Danasségarane",
+        "role": "Coordinatrice associative"
+      },
+      {
+        "id": "abisana",
+        "name": "Abisana Uthayakumar",
+        "role": "Chargée de projet"
+      },
+      {
+        "id": "blandine",
+        "name": "Madame Blandine François",
+        "role": "Mairie de Bobigny"
+      },
+      {
+        "id": "ranjith",
+        "name": "Monsieur Ranjith Singh",
+        "role": "Mairie de Bobigny"
+      }
+    ]
+  },
+  "intervenants": {
+    "title": "Intervenant.e.s",
+    "subtitle": "Intervenant.e.s et partenaires.",
+    "items": {
+      "ayyar": {
+        "name": "Docteure Rajeshwari Ayyar",
+        "role": "Hématologue et oncologue (Californie)"
+      },
+      "vidya": {
+        "name": "Vidya Balasubramanian",
+        "role": "Dirigeante dans la tech (25 ans), survivante cancer du sein"
+      },
+      "sabah": {
+        "name": "Sabah Jaroof",
+        "role": "Infirmière en santé publique (ARS), chercheuse santé femmes sud-asiatiques"
+      },
+      "anamiga": {
+        "name": "Anamiga Joseph",
+        "role": "Interprète tamoul/français, médiatrice transculturelle"
+      },
+      "tharsan": {
+        "name": "Docteur Tharsan Kanagalingam",
+        "role": "Résident en médecine interne (Université de Toronto, endocrinologie)"
+      },
+      "archena": {
+        "name": "Archena Nagalingam",
+        "role": "Praticienne en Ayurvéda, autrice"
+      },
+      "maharajah": {
+        "name": "Docteur Maharajah Ponnaiah",
+        "role": "Chercheur en médecine, data science et IA (ICAN Paris)"
+      },
+      "saakethiya": {
+        "name": "Docteure Saakethiya Sriranjan",
+        "role": "Résidente en psychiatrie (Université McMaster, directrice TARMS)"
+      },
+      "tavitian": {
+        "name": "Professeur Bertrand Tavitian",
+        "role": "Professeur, chercheur en imagerie biomédicale (Université de Paris Cité)"
+      },
+      "bobigny": {
+        "name": "Mairie de Bobigny",
+        "role": "Services santé & prévention"
+      }
+    }
+  },
+  "carousel": {
+    "prev": "Précédent",
+    "next": "Suivant"
+  },
+  "contact": {
+    "title": "Contact",
+    "desc": "Envoyez-nous un message pour collaborer ou en savoir plus.",
+    "button": "Écrire un mail"
+  },
+  "social": {
+    "title": "Réseaux sociaux"
+  },
+  "footer": {
+    "copy": "© 2025 Arokiyam pour toustes. Tous droits réservés."
+  }
+}

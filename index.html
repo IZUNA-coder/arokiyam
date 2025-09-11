@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arokiyam pour toustes</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animations douces */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(6px, -6px) scale(1.03);
+      }
+
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-drift {
+      animation: drift 10s ease-in-out infinite;
+    }
+
+    /* Slides: légère mise en avant de la diapo active */
+    .carousel-slide {
+      transition: transform .35s ease, opacity .35s ease;
+      opacity: 0.98;
+    }
+
+    .carousel-slide.is-active {
+      transform: scale(1.01);
+      opacity: 1;
+    }
+
+    /* Lisibilité du texte sur image (mobile) */
+    .text-shadow-soft {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
+    }
+
+    .hover-lift {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, .15);
+    }
+
+    /* Micro-interactions accessibles */
+    .dot {
+      transition: transform .2s ease;
+    }
+
+    .dot:hover {
+      transform: scale(1.1);
+    }
+
+    #prevBtn,
+    #nextBtn {
+      transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    #prevBtn:hover,
+    #nextBtn:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    #social a {
+      transition: color .2s ease;
+    }
+
+    /* Collapse/expand animation */
+    .collapsible {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: max-height .5s ease, opacity .35s ease, transform .35s ease;
+    }
+
+    .collapsible.open {
+      max-height: 2000px;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Floating dots background */
+    .dots-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-dot {
+      position: absolute;
+      background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, .45), rgba(16, 185, 129, .15) 60%, transparent 70%);
+      border-radius: 9999px;
+      filter: blur(0.2px);
+      opacity: .65;
+      animation: floatDot 10s ease-in-out infinite;
+    }
+
+    @keyframes floatDot {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-12px) translateX(8px);
+      }
+
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+
+    .dot-a {
+      top: 12%;
+      left: 8%;
+      width: 18px;
+      height: 18px;
+      animation-delay: 0s;
+    }
+
+    .dot-b {
+      top: 22%;
+      right: 12%;
+      width: 12px;
+      height: 12px;
+      animation-delay: .6s;
+    }
+
+    .dot-c {
+      bottom: 18%;
+      left: 16%;
+      width: 14px;
+      height: 14px;
+      animation-delay: 1.2s;
+    }
+
+    .dot-d {
+      bottom: 10%;
+      right: 20%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 1.8s;
+    }
+
+    .dot-e {
+      top: 40%;
+      left: 45%;
+      width: 10px;
+      height: 10px;
+      animation-delay: .9s;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px) scale(0.995);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .reveal.reveal-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .delay-1 {
+      transition-delay: 40ms;
+    }
+
+    .delay-2 {
+      transition-delay: 120ms;
+    }
+
+    .delay-3 {
+      transition-delay: 200ms;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-900 antialiased">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-white/90 backdrop-blur border-b border-green-100 z-50">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+      <a href="#home"
+        class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded-md">
+        <img src="/Site/assets/images/logo.png" alt="Logo Arokiyam" class="h-30 w-20" />
+        <h1 class="text-xl font-bold text-green-700">Arokiyam • ஆரோக்கியம்</h1>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center space-x-6">
+        <li><a href="#team" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.team">Équipe</a></li>
+        <li><a href="#events" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.events">Événements</a></li>
+        <li><a href="#resources" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.resources">Ressources</a></li>
+        <li><a href="#program" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.program">Programme</a></li>
+        <li><a href="#intervenants" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.speakers">Intervenant.e.s</a></li>
+        <li><a href="#contact" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.contact">Contact</a></li>
+        <li><a href="#social" class="text-slate-700 hover:text-green-700 transition-colors"
+            data-i18n="nav.social">Réseaux</a></li>
+      </ul>
+
+      <!-- Lang switcher -->
+      <div class="hidden md:flex items-center gap-2">
+        <label for="langSwitcher" class="sr-only">Langue</label>
+        <select id="langSwitcher"
+          class="border border-green-200 rounded-md text-green-800 px-2 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
+          <option value="fr">FR</option>
+          <option value="ta">தமிழ்</option>
+          <option value="en">EN</option>
+        </select>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menuBtn"
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-green-200 text-green-700 hover:bg-green-50"
+        aria-controls="mobileMenu" aria-expanded="false">
+        <span class="sr-only">Ouvrir le menu</span>
+        <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-green-100 bg-white">
+      <div class="container mx-auto p-4 space-y-3">
+        <div class="flex items-center justify-between">
+          <label for="langSwitcherMobile" class="text-green-700 font-semibold">Langue</label>
+          <select id="langSwitcherMobile" aria-label="Sélection de la langue"
+            class="border border-green-200 rounded-md text-green-800 px-2 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
+            <option value="fr">FR</option>
+            <option value="ta">தமிழ்</option>
+            <option value="en">EN</option>
+          </select>
+        </div>
+        <a href="#team" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.team">Équipe</a>
+        <a href="#intervenants" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.speakers">Intervenant.e.s</a>
+        <a href="#events" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.events">Événements</a>
+        <a href="#resources" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.resources">Ressources</a>
+        <a href="#program" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.program">Programme</a>
+        <a href="#contact" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.contact">Contact</a>
+        <a href="#social" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
+          data-i18n="nav.social">Réseaux</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home"
+    class="relative overflow-hidden min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-green-50 to-white pt-24">
+    <!-- Blobs décoratifs -->
+    <div
+      class="pointer-events-none absolute -top-10 -left-10 h-56 w-56 bg-green-200 rounded-full blur-xl opacity-40 animate-drift">
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-12 -right-12 h-64 w-64 bg-emerald-200 rounded-full blur-xl opacity-40 animate-float">
+    </div>
+    <!-- Soft floating dots layer -->
+    <div aria-hidden="true" class="dots-layer" data-parallax="10">
+      <span class="floating-dot dot-a"></span>
+      <span class="floating-dot dot-b"></span>
+      <span class="floating-dot dot-c"></span>
+      <span class="floating-dot dot-d"></span>
+      <span class="floating-dot dot-e"></span>
+    </div>
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 text-center text-green-800 reveal delay-1"
+      data-i18n="hero.title">Bienvenue sur le site d'Arokiyam pour toustes</h2>
+    <p class="text-lg md:text-xl text-center max-w-3xl text-green-800 leading-relaxed reveal delay-2"
+      data-i18n="hero.subtitle">Association dédiée à la solidarité, l'entraide et l'inclusion.</p>
+    <p class="mt-4 text-center text-sm md:text-base text-green-700 max-w-2xl leading-relaxed reveal delay-3"
+      data-i18n="hero.tagline">“Arokiyam” signifie santé en tamoul — ஆரோக்கியம் (arōkiyam).</p>
+  </section>
+
+  <!-- Team Section (remplace À propos) -->
+  <section id="team" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <h3 class="text-3xl font-bold mb-2 text-center text-green-700" data-i18n="team.title">Équipe</h3>
+      <p class="text-center text-slate-700 leading-relaxed mb-10" data-i18n="team.subtitle">Ensemble, pour la santé et
+        la solidarité — ஆரோக்கியம் 🌿</p>
+      <div class="relative carousel-wrapper">
+        <div class="overflow-hidden rounded-xl shadow ring-1 ring-green-100 hover-lift">
+          <div class="carousel-track flex transition-transform duration-500 ease-out">
+            <!-- Slide 1 Soubattra Danasségarane -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/soubattra.png" alt="Portrait de Soubattra Danasségarane"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide1.name">Soubattra Danasségarane</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide1.role">Professeure de philosophie,
+                  artiste, doctorante</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide1.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 2 Roshan Gnaneswaran -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/roshan.png" alt="Portrait de Roshan Gnaneswaran"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/500x600.png?text=Roshan';">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide2.name">Roshan Gnaneswaran</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide2.role">Bachelor en informatique</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide2.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 3 Nirusha Natkunarajah -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/nirusha.png" alt="Portrait de Nirusha Natkunarajah"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide3.name">Nirusha Natkunarajah</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide3.role">Étudiante en droit
+                  international, militante</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide3.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 4 Larissa Nithyanandan Patrick -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/larissa.png" alt="Portrait de Larissa Nithyanandan Patrick"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/500x600.png?text=Larissa';">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide4.name">Larissa Nithyanandan Patrick
+                </h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide4.role">Étudiante en 6ᵉ année de
+                  pharmacie</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide4.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 5 Viwayga Pudkarananthan -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/viwayga.png" alt="Portrait de Viwayga Pudkarananthan"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/500x600.png?text=Viwayga';">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide5.name">Viwayga Pudkarananthan</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide5.role">Ingénieure en dispositifs
+                  médicaux</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide5.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 6 Suvetha Suthan -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/suvetha.png" alt="Portrait de Suvetha Suthan"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/500x600.png?text=Suvetha';">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide6.name">Suvetha Suthan</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide6.role">Étudiante en sciences politiques
+                  (spécialisation en conflits)</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide6.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 7 Thinesh Thanabalasingam -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/thinesh.png" alt="Portrait de Thinesh Thanabalasingam"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/500x600.png?text=Thinesh';">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide7.name">Thinesh Thanabalasingam</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide7.role">Étudiant en direction
+                  artistique, réalisateur, photographe</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide7.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 8 Abisana Uthayakumar -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/abisana.png" alt="Portrait d'Abisana Uthayakumar"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide8.name">Abisana Uthayakumar</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide8.role">Étudiante en gestion de
+                  l’innovation sociale, éducatrice spécialisée</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide8.desc">Bio FR
+                </p>
+              </div>
+            </article>
+            <!-- Slide 9 Thulaciga Yoganathan -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
+                <div class="w-full h-72 md:h-[420px] md:w-auto">
+                  <img src="assets/images/membres/thula.png" alt="Portrait de Thulaciga Yoganathan"
+                    class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200">
+                </div>
+              </div>
+              <div class="p-8 md:p-12 flex flex-col justify-center">
+                <h4 class="text-2xl font-bold text-green-800" data-i18n="team.slide9.name">Thulaciga Yoganathan</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="team.slide9.role">Chercheuse en maladies
+                  cardiovasculaires, fondatrice Arokiyam</p>
+                <p class="mt-4 text-slate-700 leading-relaxed text-sm md:text-base" data-i18n="team.slide9.desc">Bio FR
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Controls (équipe) -->
+        <button
+          class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow border border-green-100 text-green-700"
+          aria-label="Précédent" data-i18n-aria-label="carousel.prev">‹</button>
+        <button
+          class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow border border-green-100 text-green-700"
+          aria-label="Suivant" data-i18n-aria-label="carousel.next">›</button>
+
+        <!-- Dots -->
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-600" aria-label="Aller à la diapo 1"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 2"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 3"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 4"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 5"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 6"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 7"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 8"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 9"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 10"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (Ancienne section intervenants déplacée plus bas) -->
+
+  <!-- Events Section -->
+  <section id="events" class="py-20 px-6 bg-emerald-50">
+    <div class="container mx-auto max-w-5xl">
+      <h3 class="text-3xl font-bold mb-2 text-center text-green-800" data-i18n="events.title">Événements</h3>
+      <p class="text-center text-slate-700 leading-relaxed mb-10" data-i18n="events.subtitle">Retrouvez nos actions de
+        sensibilisation et nos rencontres.</p>
+
+      <!-- Event card -->
+      <div class="relative overflow-hidden rounded-xl bg-white shadow ring-1 ring-green-100 hover-lift">
+        <div class="absolute -right-10 -top-10 h-40 w-40 bg-green-100 rounded-full blur-2xl opacity-60 animate-drift">
+        </div>
+        <div class="grid md:grid-cols-3">
+          <div class="p-6 md:col-span-2">
+            <h4 class="text-2xl font-semibold text-green-800" data-i18n="events.healthTamil.title">Journée de
+              sensibilisation à la santé tamile</h4>
+            <p class="mt-2 text-slate-800 leading-relaxed">
+              <span class="font-medium" data-i18n="events.date.label">Date:</span>
+              <span data-i18n="events.healthTamil.date">Lundi 13 septembre</span>
+            </p>
+            <p class="mt-1 text-slate-800 leading-relaxed">
+              <span class="font-medium" data-i18n="events.place.label">Lieu:</span>
+              <span data-i18n="events.healthTamil.place">Salle d'honneur de la Mairie de Bobigny</span>
+            </p>
+            <a href="https://maps.google.com/?q=Mairie%20de%20Bobigny" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 mt-3 text-green-700 hover:text-green-900 underline transition-colors"
+              data-i18n="events.mapLink">Voir sur Google Maps</a>
+
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a href="#program"
+                class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition-colors"
+                data-i18n="events.program.button">Voir le programme de la journée</a>
+            </div>
+          </div>
+          <div class="p-6 bg-green-50 flex items-center justify-center">
+            <span class="text-6xl" aria-hidden="true">🌿</span>
+          </div>
+        </div>
+        <!-- No inline brochure viewer in Events anymore -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section id="resources" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <h3 class="text-3xl font-bold mb-2 text-center text-green-800" data-i18n="resources.title">Ressources</h3>
+      <p class="text-center text-slate-700 leading-relaxed mb-6" data-i18n="resources.subtitle">Livret d'information et
+        documents utiles.</p>
+      <div class="relative overflow-hidden rounded-xl bg-white shadow ring-1 ring-green-100 hover-lift">
+        <div class="absolute -left-10 -top-10 h-40 w-40 bg-green-100 rounded-full blur-2xl opacity-60 animate-drift">
+        </div>
+        <div class="p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h4 class="text-2xl font-semibold text-green-800" data-i18n="resources.bookletTitle">Livret d'information
+              santé</h4>
+            <p class="mt-1 text-slate-800" data-i18n="resources.bookletDesc">Consultez notre livret de sensibilisation
+              (versions PDF).</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button id="openResourcesViewer"
+              class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition-colors"
+              data-i18n="resources.viewer.open">Ouvrir le livret</button>
+            <a href="assets/docs/livret_sante.pdf" download
+              class="inline-flex items-center gap-2 border border-green-300 text-green-800 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors"
+              data-i18n="resources.viewer.download">Télécharger (PDF)</a>
+          </div>
+        </div>
+        <div id="resourcesViewer" class="collapsible">
+          <div class="p-4 flex items-center justify-between border-t border-green-100 bg-gray-50">
+            <h5 class="text-lg font-semibold text-green-800" data-i18n="resources.viewer.title">Lecteur du livret</h5>
+            <div class="flex items-center gap-3">
+              <button id="resZoomOutBtn" aria-label="Réduire le zoom"
+                class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50">−</button>
+              <span id="resZoomLabel" class="text-sm text-green-800">160%</span>
+              <button id="resZoomInBtn" aria-label="Augmenter le zoom"
+                class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50">+</button>
+              <a id="resOpenPdfNewTab" href="assets/docs/livret_sante.pdf" target="_blank" rel="noopener"
+                class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50"
+                data-i18n="resources.viewer.openTab">Ouvrir</a>
+            </div>
+          </div>
+          <div class="h-[80vh]">
+            <object id="resPdfFrame" data="assets/docs/livret_sante.pdf#page=1&zoom=160&view=FitH"
+              type="application/pdf" class="w-full h-full">
+              <embed src="assets/docs/livret_sante.pdf#page=1&zoom=160&view=FitH" type="application/pdf"
+                class="w-full h-full" />
+              <p class="p-4 text-green-800">Votre navigateur ne peut pas afficher ce PDF. <a
+                  href="assets/docs/livret_sante.pdf" target="_blank" rel="noopener" class="underline">Ouvrir le
+                  PDF</a>.</p>
+            </object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Section -->
+  <section id="program" class="py-20 px-6 bg-emerald-50">
+    <div class="container mx-auto max-w-5xl">
+      <h3 class="text-3xl font-bold mb-2 text-center text-green-800" data-i18n="program.title">Programme de la journée
+      </h3>
+      <p class="text-center text-slate-700 leading-relaxed mb-8" data-i18n="program.subtitle">Détails des sessions (FR •
+        EN • தமிழ்).</p>
+
+      <div class="relative overflow-hidden rounded-xl bg-white shadow ring-1 ring-green-100">
+        <div class="absolute -right-10 -top-10 h-40 w-40 bg-green-100 rounded-full blur-2xl opacity-60 animate-drift">
+        </div>
+        <div class="p-6">
+          <div class="mb-4">
+            <h4 class="text-2xl font-semibold text-green-800" data-i18n="program.header.title">Programme</h4>
+            <p class="text-slate-800" data-i18n="program.header.meta">Meta</p>
+          </div>
+          <div id="programList" class="grid gap-4"></div>
+          <div class="mt-6 text-center">
+            <button id="programToggle"
+              class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition-colors"
+              data-i18n="program.showAll">Voir tout le programme</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intervenants Section (après programme) -->
+  <section id="intervenants" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <h3 class="text-3xl font-bold mb-2 text-center text-green-800" data-i18n="intervenants.title">Intervenant.e.s</h3>
+      <p class="text-center text-slate-700 leading-relaxed mb-10" data-i18n="intervenants.subtitle">Intervenant.e.s et
+        partenaires.</p>
+      <div class="relative carousel-wrapper">
+        <div class="overflow-hidden rounded-xl shadow ring-1 ring-green-100 hover-lift">
+          <div class="carousel-track flex transition-transform duration-500 ease-out">
+            <!-- Intervenant 1 Rajeshwari Ayyar -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/rajeshwari.png" alt="Portrait de Rajeshwari Ayyar"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=R+A';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.ayyar.name">Docteure
+                  Rajeshwari Ayyar</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.ayyar.role">Hématologue et
+                  oncologue (Californie)</p>
+              </div>
+            </article>
+            <!-- Intervenant 2 Vidya Balasubramanian -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/vidya.png" alt="Portrait de Vidya Balasubramanian"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=V+B';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.vidya.name">Vidya
+                  Balasubramanian</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.vidya.role">Dirigeante dans la
+                  tech (25 ans), survivante cancer du sein
+                </p>
+              </div>
+            </article>
+            <!-- Intervenant 3 Sabah Jaroof -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/sabah.png" alt="Portrait de Sabah Jaroof"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=S+J';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.sabah.name">Sabah Jaroof
+                </h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.sabah.role">Infirmière en santé
+                  publique (ARS), chercheuse santé femmes
+                  sud-asiatiques</p>
+              </div>
+            </article>
+            <!-- Intervenant 4 Anamiga Joseph -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/anamiga.png" alt="Portrait d'Anamiga Joseph"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=A+J';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.anamiga.name">Anamiga
+                  Joseph</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.anamiga.role">Interprète
+                  tamoul/français, médiatrice transculturelle</p>
+              </div>
+            </article>
+            <!-- Intervenant 5 Tharsan Kanagalingam -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/tharsan.jpeg" alt="Portrait de Tharsan Kanagalingam"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=T+K';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.tharsan.name">Docteur
+                  Tharsan Kanagalingam</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.tharsan.role">Résident en
+                  médecine interne (Université de Toronto,
+                  endocrinologie)</p>
+              </div>
+            </article>
+            <!-- Intervenant 6 Archena Nagalingam -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/archena.webp" alt="Portrait d'Archena Nagalingam"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=A+N';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.archena.name">Archena
+                  Nagalingam</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.archena.role">Praticienne en
+                  Ayurvéda, autrice</p>
+              </div>
+            </article>
+            <!-- Intervenant 7 Maharajah Ponnaiah -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/maharajah.jpeg" alt="Portrait de Maharajah Ponnaiah"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=M+P';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.maharajah.name">Docteur
+                  Maharajah Ponnaiah</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.maharajah.role">Chercheur en
+                  médecine, data science et IA (ICAN Paris)</p>
+              </div>
+            </article>
+            <!-- Intervenant 8 Saakethiya Sriranjan -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/saakethiya.jpg" alt="Portrait de Saakethiya Sriranjan"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=S+S';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.saakethiya.name">
+                  Docteure Saakethiya Sriranjan</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.saakethiya.role">Résidente en
+                  psychiatrie (Université McMaster, directrice
+                  TARMS)</p>
+              </div>
+            </article>
+            <!-- Intervenant 9 Bertrand Tavitian -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/bertrand.png" alt="Portrait de Bertrand Tavitian"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=B+T';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.tavitian.name">
+                  Professeur Bertrand Tavitian</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.tavitian.role">Professeur,
+                  chercheur en imagerie biomédicale (Université de
+                  Paris Cité)</p>
+              </div>
+            </article>
+            <!-- Intervenant 10 Mairie de Bobigny -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/bobigny.png" alt="Logo Mairie de Bobigny"
+                    class="w-full h-full object-contain md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=Bobigny';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.bobigny.name">Mairie de
+                  Bobigny</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.bobigny.role">Services santé &
+                  prévention</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <!-- Controls (intervenants) -->
+        <button
+          class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow border border-green-100 text-green-700"
+          aria-label="Précédent" data-i18n-aria-label="carousel.prev">‹</button>
+        <button
+          class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow border border-green-100 text-green-700"
+          aria-label="Suivant" data-i18n-aria-label="carousel.next">›</button>
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-600" aria-label="Aller à la diapo 1"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 2"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 3"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 4"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 5"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 6"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 7"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 8"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 9"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 10"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-green-50">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h3 class="text-3xl font-bold mb-6 text-green-800" data-i18n="contact.title">Contact</h3>
+      <p class="mb-4 text-slate-800 leading-relaxed" data-i18n="contact.desc">Envoyez-nous un message pour collaborer ou
+        en savoir plus.</p>
+      <a href="mailto:	arokiyam.pour.tous@gmail.com"
+        class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition-colors hover-lift"
+        data-i18n="contact.button">Écrire un mail</a>
+    </div>
+  </section>
+
+  <!-- Social Section -->
+  <section id="social" class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h3 class="text-3xl font-bold mb-6 text-green-800" data-i18n="social.title">Réseaux sociaux</h3>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="text-sky-500 hover:text-sky-700">Tiktok</a>
+        <a href="https://www.instagram.com/arokiyam.pour.toustes?igsh=MXFsY3dqeGF5dXhsaQ=="
+          class="text-pink-600 hover:text-pink-800">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p data-i18n="footer.copy">&copy; 2025 Arokiyam pour toustes. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Scripts: nav + carousel + i18n -->
+  <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

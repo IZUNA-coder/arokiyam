@@ -1,0 +1,336 @@
+{
+  "__lang": "en",
+  "nav": {
+    "home": "Home",
+    "team": "Team",
+    "speakers": "Speakers",
+    "events": "Events",
+    "resources": "Resources",
+    "program": "Program",
+    "contact": "Contact",
+    "social": "Social"
+  },
+  "hero": {
+    "title": "Welcome to Arokiyam for all",
+    "subtitle": "An association dedicated to solidarity, mutual aid and inclusion.",
+    "tagline": "“Arokiyam” means health in Tamil — ஆரோக்கியம் (arōkiyam). Inspired by kolams and the lotus flower, we place care and mutual aid at the heart of our actions."
+  },
+  "team": {
+    "title": "Team",
+    "subtitle": "Together, for health and solidarity — ஆரோக்கியம் 🌿",
+    "slide1": {
+      "name": "Soubattra Danasségarane",
+      "role": "Philosophy Teacher, Artist, PhD Candidate",
+      "desc": "Philosophy teacher and artist, currently pursuing a PhD in philosophy of language and identity. A stomach cancer survivor, she works to break the taboos surrounding the disease, especially within the Tamil community. Through art (comics, exhibitions), she gives visibility to vulnerable people’s stories and highlights elders often forgotten."
+    },
+    "slide2": {
+      "name": "Roshan Gnaneswaran",
+      "role": "Bachelor in Computer Science",
+      "desc": "Computer Science graduate, Roshan joined the Arokiyam team out of conviction. He believes access to health information is crucial for the Tamil community and is confident that greater awareness can lead to real change."
+    },
+    "slide3": {
+      "name": "Nirusha Natkunarajah",
+      "role": "International Law Student, Activist",
+      "desc": "International law student, Nirusha identifies as an activist. She joined this project because she believes it is her duty to protect and inform Tamil elders about their health rights. She aims to highlight health issues often overlooked in the system."
+    },
+    "slide4": {
+      "name": "Larissa Nithyanandan Patrick",
+      "role": "6th-year Pharmacy Student",
+      "desc": "Pharmacy student, Larissa is committed to making healthcare accessible and understandable. Through outreach in the Tamil community, she has seen how clear communication can prevent fear and delays in treatment."
+    },
+    "slide5": {
+      "name": "Viwayga Pudkarananthan",
+      "role": "Medical Device Engineer",
+      "desc": "Medical device engineer, Viwayga is committed to designing inclusive healthcare solutions. She joined this project to help elders better understand their health and to break taboos in the community."
+    },
+    "slide6": {
+      "name": "Suvetha Suthan",
+      "role": "Political Science Student (Conflict Studies)",
+      "desc": "Political science student specialized in conflict studies, Suvetha is dedicated to ensuring healthcare access for all communities, especially those affected by discrimination. She also focuses on the link between physical pain and mental health."
+    },
+    "slide7": {
+      "name": "Thinesh Thanabalasingam",
+      "role": "Art Direction Student, Creative Director, Filmmaker, Photographer",
+      "desc": "Art direction student, Thinesh also works as a filmmaker and photographer. He joined the project for personal reasons, believing creativity and community action are powerful tools for health awareness."
+    },
+    "slide8": {
+      "name": "Abisana Uthayakumar",
+      "role": "Master’s Student in Social Innovation Management, Special Needs Educator",
+      "desc": "Social innovation management student and special needs educator, Abisana noticed the lack of health awareness in her community. Her work with children and Tamil adults revealed the long-term effects of neglected health."
+    },
+    "slide9": {
+      "name": "Thulaciga Yoganathan",
+      "role": "Cardiovascular Research Scientist, Founder of Arokiyam",
+      "desc": "Researcher in age-related cardiovascular diseases, Thulaciga has observed healthcare inequities, especially affecting women. She founded Arokiyam and the Tamil Health Awareness Day to reduce these disparities."
+    }
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Find our awareness-raising actions and meetups.",
+    "date": {
+      "label": "Date:"
+    },
+    "place": {
+      "label": "Place:"
+    },
+    "mapLink": "View on Google Maps",
+    "program": {
+      "button": "View the day program"
+    },
+    "healthTamil": {
+      "title": "Tamil Health Awareness Day",
+      "date": "Monday, September 13",
+      "place": "Bobigny City Hall"
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Information booklet and useful documents.",
+    "bookletTitle": "Health information booklet",
+    "bookletDesc": "Consult our awareness booklet (PDF versions).",
+    "viewer": {
+      "open": "Open the booklet",
+      "download": "Download (PDF)",
+      "title": "Booklet viewer",
+      "openTab": "Open"
+    }
+  },
+  "program": {
+    "title": "Day Program",
+    "subtitle": "Session details (FR • EN • தமிழ்).",
+    "header": {
+      "title": "Tamil Community Health Awareness Day Program",
+      "meta": "Presented by Arokiyam Pour Tous.tes and the Bobigny City Council — Saturday, September 13, 2025 — Salon d'honneur, Bobigny City Hall"
+    },
+    "labels": {
+      "speakers": "Speakers"
+    },
+    "showAll": "View full program",
+    "showLess": "Show less",
+    "items": [
+      {
+        "time": "9:00 - 9:15",
+        "title": "Welcome and Introduction",
+        "content": "Intro to the initiative, goals and themes (cancer, cardiovascular diseases, health rights). Importance of prevention within the Tamil community.",
+        "speakers": "Arokiyam team, Bobigny City Council (Mrs Blandine François, Mr Ranjith Singh)"
+      },
+      {
+        "time": "9:15 - 10:15",
+        "title": "Workshop - Sugar and Diabetes",
+        "content": "Type 2 diabetes awareness, blood sugar, preventative blood tests, interpreting results, tips adapted to Tamil cuisine.",
+        "speakers": "Viwayga Pudkarananthan, Larissa Patrick Nithyanandan"
+      },
+      {
+        "time": "10:15 - 11:45",
+        "title": "Talk - A Healthy Heart",
+        "content": "Cardiovascular diseases, sex- and South Asian-specific symptoms, risk factors including diabetes.",
+        "speakers": "Professor Bertrand Tavitian, Doctor Thulaciga Yoganathan, TARMS Canada Team (Doctor Saakethiya Sriranjan, Doctor Tharsan Kanagalingam), Doctor Maharajah Ponnaiah, Christian Thomas (IDF-93 Diabetic Patients Association), Judith Dumoulin (Advanced Practice Nurse in diabetes)"
+      },
+      {
+        "time": "11:45 - 12:00",
+        "title": "Break and Portrait Exhibition",
+        "content": "Exhibition \"Udalin Payanam: Engal Kuralkal\" (The Body's Journey: Our Voices).",
+        "speakers": "S. Danasségarane, A. Uthayakumar"
+      },
+      {
+        "time": "12:00 - 13:15",
+        "title": "Lunch Break",
+        "content": "—",
+        "speakers": "—"
+      },
+      {
+        "time": "13:15 - 14:15",
+        "title": "Workshop - Ayurvedic Cooking",
+        "content": "Daily Ayurvedic cooking rituals.",
+        "speakers": "Archcena Nagalingam"
+      },
+      {
+        "time": "14:20 - 15:45",
+        "title": "Talk - Early Signs of Cancer",
+        "content": "Breast and digestive symptoms, demystifying chemotherapy, testimonials.",
+        "speakers": "Doctor Rajeshwari Ayyar (California), Soubattra Danasségarane, Vidya Balasubramanian"
+      },
+      {
+        "time": "15:45 - 16:45",
+        "title": "Workshop - Cancer Prevention",
+        "content": "Breast self-exam and colorectal screening kit.",
+        "speakers": "Larissa Patrick Nithyanandan, Doctor Thulaciga Yoganathan"
+      },
+      {
+        "time": "16:45 - 17:15",
+        "title": "Snack Break",
+        "content": "Tasting of alternatives.",
+        "speakers": "Viwayga Pudkarananthan"
+      },
+      {
+        "time": "17:15 - 18:45",
+        "title": "Talk - Health Rights",
+        "content": "Accessibility, obstacles, inequalities, discrimination, action steps; useful contacts (Bobigny/Paris).",
+        "speakers": "Sabah Jaroof, Nirusha Natkunarajah, Larissa Patrick Nithyanandan"
+      },
+      {
+        "time": "18:45 - 19:00",
+        "title": "Closing Remarks",
+        "content": "Thanks and next actions. FR/Ta translation: Anamiga Joseph. Recording: Thinesh Thanabalasingam.",
+        "speakers": "Organizing team, City Council"
+      }
+    ]
+  },
+  "speakersSection": {
+    "title": "Speakers",
+    "subtitle": "Guest speakers and partners.",
+    "list": [
+      {
+        "id": "tavitian",
+        "name": "Professor Bertrand Tavitian",
+        "role": "Professor of Medicine"
+      },
+      {
+        "id": "thulaciga",
+        "name": "Doctor Thulaciga Yoganathan",
+        "role": "Medical Doctor"
+      },
+      {
+        "id": "saakethiya",
+        "name": "Doctor Saakethiya Sriranjan",
+        "role": "Medical Doctor (TARMS Canada)"
+      },
+      {
+        "id": "tharsan",
+        "name": "Doctor Tharsan Kanagalingam",
+        "role": "Medical Doctor (TARMS Canada)"
+      },
+      {
+        "id": "maharajah",
+        "name": "Doctor Maharajah Ponnaiah",
+        "role": "Medical Doctor"
+      },
+      {
+        "id": "christian",
+        "name": "Christian Thomas",
+        "role": "IDF-93 Diabetic Patients Association"
+      },
+      {
+        "id": "judith",
+        "name": "Judith Dumoulin",
+        "role": "Advanced Practice Nurse (diabetes)"
+      },
+      {
+        "id": "viwayga",
+        "name": "Viwayga Pudkarananthan",
+        "role": "Health Educator"
+      },
+      {
+        "id": "larissa",
+        "name": "Larissa Patrick Nithyanandan",
+        "role": "Health Educator"
+      },
+      {
+        "id": "archcena",
+        "name": "Archcena Nagalingam",
+        "role": "Cooking Workshop Facilitator"
+      },
+      {
+        "id": "rajeshwari",
+        "name": "Doctor Rajeshwari Ayyar",
+        "role": "Medical Doctor"
+      },
+      {
+        "id": "vidya",
+        "name": "Vidya Balasubramanian",
+        "role": "Testimonial"
+      },
+      {
+        "id": "sabah",
+        "name": "Sabah Jaroof",
+        "role": "Health rights"
+      },
+      {
+        "id": "nirusha",
+        "name": "Nirusha Natkunarajah",
+        "role": "Public Health Student"
+      },
+      {
+        "id": "soubattra",
+        "name": "Soubattra Danasségarane",
+        "role": "Association Coordinator"
+      },
+      {
+        "id": "abisana",
+        "name": "Abisana Uthayakumar",
+        "role": "Project Officer"
+      },
+      {
+        "id": "blandine",
+        "name": "Mrs Blandine François",
+        "role": "Bobigny City Council"
+      },
+      {
+        "id": "ranjith",
+        "name": "Mr Ranjith Singh",
+        "role": "Bobigny City Council"
+      }
+    ]
+  },
+  "intervenants": {
+    "title": "Speakers",
+    "subtitle": "Speakers and partners.",
+    "items": {
+      "ayyar": {
+        "name": "Doctor Rajeshwari Ayyar",
+        "role": "Hematologist & Oncologist (California)"
+      },
+      "vidya": {
+        "name": "Vidya Balasubramanian",
+        "role": "Technology Leader (25+ years), Breast Cancer Survivor"
+      },
+      "sabah": {
+        "name": "Sabah Jaroof",
+        "role": "Public Health Nurse (ARS), Researcher on South Asian Women’s Health"
+      },
+      "anamiga": {
+        "name": "Anamiga Joseph",
+        "role": "Tamil-French Interpreter, Transcultural Mediator"
+      },
+      "tharsan": {
+        "name": "Doctor Tharsan Kanagalingam",
+        "role": "Internal Medicine Resident (University of Toronto, Endocrinology)"
+      },
+      "archena": {
+        "name": "Archena Nagalingam",
+        "role": "Ayurvedic Practitioner, Author"
+      },
+      "maharajah": {
+        "name": "Doctor Maharajah Ponnaiah",
+        "role": "Medical, Data Science & AI Researcher (ICAN Paris)"
+      },
+      "saakethiya": {
+        "name": "Doctor Saakethiya Sriranjan",
+        "role": "Psychiatry Resident (McMaster University, TARMS Director)"
+      },
+      "tavitian": {
+        "name": "Professor Bertrand Tavitian",
+        "role": "Professor, Biomedical Imaging Researcher (Université de Paris Cité)"
+      },
+      "bobigny": {
+        "name": "City of Bobigny",
+        "role": "Health & Prevention Services"
+      }
+    }
+  },
+  "carousel": {
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "contact": {
+    "title": "Contact",
+    "desc": "Send us a message to collaborate or learn more.",
+    "button": "Send an email"
+  },
+  "social": {
+    "title": "Social media"
+  },
+  "footer": {
+    "copy": "© 2025 Arokiyam for all. All rights reserved."
+  }
+}
