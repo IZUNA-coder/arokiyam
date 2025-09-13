@@ -8,11 +8,12 @@
     "resources": "Ressources",
     "program": "Programme",
     "contact": "Contact",
-    "social": "Réseaux"
+    "social": "Réseaux",
+    "language": "Langue"
   },
   "hero": {
-    "title": "Bienvenue sur le site d'Arokiyam pour toustes",
-    "subtitle": "Association dédiée à la solidarité, l'entraide et l'inclusion.",
+    "title": "Arokiyam pour toustes",
+    "subtitle": "Organisation qui joue le rôle de médiatrice et de passerelle pour la santé mentale et physique.",
     "tagline": "“Arokiyam” signifie santé en tamoul — ஆரோக்கியம் (arōkiyam)."
   },
   "team": {
@@ -49,7 +50,7 @@
       "desc": "Étudiante en sciences politiques spécialisée dans les conflits, Suvetha veut garantir l’accès aux soins pour toutes les communautés, notamment celles discriminées. Elle s’intéresse aussi au lien entre douleur physique et santé mentale."
     },
     "slide7": {
-      "name": "Thinesh Thanabalasingam",
+      "name": "Thinesh Thanapalasingam",
       "role": "Étudiant en direction artistique, réalisateur, photographe",
       "desc": "Étudiant en direction artistique, Thinesh est aussi réalisateur et photographe. Il participe au projet pour des raisons personnelles, convaincu que la créativité et l’action communautaire sont des leviers puissants pour la santé."
     },
@@ -79,7 +80,7 @@
     },
     "healthTamil": {
       "title": "Journée de sensibilisation à la santé tamil",
-      "date": "Lundi 13 septembre",
+      "date": "Samedi 13 septembre",
       "place": "Mairie de Bobigny"
     }
   },
@@ -136,13 +137,13 @@
         "time": "12h00 - 13h15",
         "title": "Pause déjeuner",
         "content": "—",
-        "speakers": "—"
+        "speakers": "Silvin Sarva"
       },
       {
         "time": "13h15 - 14h15",
         "title": "Atelier - Cuisine Ayurvédique",
         "content": "Rituels de cuisine ayurvédique pour la santé au quotidien.",
-        "speakers": "Archcena Nagalingam"
+        "speakers": "Archcena Nagalingam, Silvin Sarva"
       },
       {
         "time": "14h20 - 15h45",
@@ -315,6 +316,10 @@
       "bobigny": {
         "name": "Mairie de Bobigny",
         "role": "Services santé & prévention"
+      },
+      "silvin": {
+        "name": "Silvin Sarva",
+        "role": "Traiteur spécialisé en cuisine tamoule"
       }
     }
   },

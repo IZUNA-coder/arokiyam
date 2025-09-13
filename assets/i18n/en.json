@@ -8,12 +8,13 @@
     "resources": "Resources",
     "program": "Program",
     "contact": "Contact",
-    "social": "Social"
+    "social": "Social",
+    "language": "Language"
   },
   "hero": {
-    "title": "Welcome to Arokiyam for all",
-    "subtitle": "An association dedicated to solidarity, mutual aid and inclusion.",
-    "tagline": "“Arokiyam” means health in Tamil — ஆரோக்கியம் (arōkiyam). Inspired by kolams and the lotus flower, we place care and mutual aid at the heart of our actions."
+    "title": "Arokiyam for all",
+    "subtitle": "Awareness organization acting as a mediator and bridge for mental and physical health.",
+    "tagline": "“Arokiyam” means health in Tamil — ஆரோக்கியம் (arōkiyam)."
   },
   "team": {
     "title": "Team",
@@ -49,7 +50,7 @@
       "desc": "Political science student specialized in conflict studies, Suvetha is dedicated to ensuring healthcare access for all communities, especially those affected by discrimination. She also focuses on the link between physical pain and mental health."
     },
     "slide7": {
-      "name": "Thinesh Thanabalasingam",
+      "name": "Thinesh Thanapalasingam",
       "role": "Art Direction Student, Creative Director, Filmmaker, Photographer",
       "desc": "Art direction student, Thinesh also works as a filmmaker and photographer. He joined the project for personal reasons, believing creativity and community action are powerful tools for health awareness."
     },
@@ -79,7 +80,7 @@
     },
     "healthTamil": {
       "title": "Tamil Health Awareness Day",
-      "date": "Monday, September 13",
+      "date": "Saturday, September 13",
       "place": "Bobigny City Hall"
     }
   },
@@ -136,13 +137,13 @@
         "time": "12:00 - 13:15",
         "title": "Lunch Break",
         "content": "—",
-        "speakers": "—"
+        "speakers": "Silvin Sarva"
       },
       {
         "time": "13:15 - 14:15",
         "title": "Workshop - Ayurvedic Cooking",
         "content": "Daily Ayurvedic cooking rituals.",
-        "speakers": "Archcena Nagalingam"
+        "speakers": "Archcena Nagalingam, Silvin Sarva"
       },
       {
         "time": "14:20 - 15:45",
@@ -315,6 +316,10 @@
       "bobigny": {
         "name": "City of Bobigny",
         "role": "Health & Prevention Services"
+      },
+      "silvin": {
+        "name": "Silvin Sarva",
+        "role": "Caterer specialized in Tamil cuisine"
       }
     }
   },

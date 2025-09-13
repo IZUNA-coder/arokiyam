@@ -202,6 +202,12 @@
     .delay-3 {
       transition-delay: 200ms;
     }
+
+    /* Lang modal animations */
+    #langModal .overlay { opacity: 0; transition: opacity .25s ease; }
+    #langModal.open .overlay { opacity: 1; }
+    #langModal .panel { transform: scale(0.96); opacity: 0; transition: transform .25s ease, opacity .25s ease; }
+    #langModal.open .panel { transform: scale(1); opacity: 1; }
   </style>
 </head>
 
@@ -212,7 +218,7 @@
     <nav class="container mx-auto flex justify-between items-center p-4">
       <a href="#home"
         class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded-md">
-        <img src="/Site/assets/images/logo.png" alt="Logo Arokiyam" class="h-30 w-20" />
+        <img src="assets/images/logo.png" alt="Logo Arokiyam" class="h-30 w-20" />
         <h1 class="text-xl font-bold text-green-700">Arokiyam • ஆரோக்கியம்</h1>
       </a>
 
@@ -234,16 +240,7 @@
             data-i18n="nav.social">Réseaux</a></li>
       </ul>
 
-      <!-- Lang switcher -->
-      <div class="hidden md:flex items-center gap-2">
-        <label for="langSwitcher" class="sr-only">Langue</label>
-        <select id="langSwitcher"
-          class="border border-green-200 rounded-md text-green-800 px-2 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
-          <option value="fr">FR</option>
-          <option value="ta">தமிழ்</option>
-          <option value="en">EN</option>
-        </select>
-      </div>
+      
 
       <!-- Mobile hamburger -->
       <button id="menuBtn"
@@ -264,15 +261,7 @@
     <!-- Mobile menu -->
     <div id="mobileMenu" class="md:hidden hidden border-t border-green-100 bg-white">
       <div class="container mx-auto p-4 space-y-3">
-        <div class="flex items-center justify-between">
-          <label for="langSwitcherMobile" class="text-green-700 font-semibold">Langue</label>
-          <select id="langSwitcherMobile" aria-label="Sélection de la langue"
-            class="border border-green-200 rounded-md text-green-800 px-2 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
-            <option value="fr">FR</option>
-            <option value="ta">தமிழ்</option>
-            <option value="en">EN</option>
-          </select>
-        </div>
+        
         <a href="#team" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
           data-i18n="nav.team">Équipe</a>
         <a href="#intervenants" class="block px-2 py-2 rounded hover:bg-green-50 transition-colors"
@@ -290,6 +279,58 @@
       </div>
     </div>
   </header>
+
+  <!-- Sélecteur de langue : menu déroulant (bas droite, avec marge) -->
+  <div class="fixed right-4 md:right-5 bottom-6 md:bottom-8 z-40">
+    <div class="relative">
+      <button id="langMenuBtn" type="button"
+        class="inline-flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur border border-green-200 shadow rounded-full text-2xl text-green-800 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-300"
+        aria-haspopup="true" aria-expanded="false" data-i18n-aria-label="nav.language" title="Langue">
+        <span id="langMenuIcon" aria-hidden="true">🐅</span>
+        <span class="sr-only" data-i18n="nav.language">Langue</span>
+      </button>
+      
+      <!-- Sélecteur caché pour compatibilité avec app.js -->
+      <select id="langSwitcher" aria-label="Sélection de la langue" class="sr-only">
+        <option value="fr">🇫🇷 FR</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="ta">� தமிழ்</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Modal de langue (overlay) -->
+  <div id="langModal" class="fixed inset-0 hidden z-50">
+    <div class="overlay absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+      <div id="langDialog" role="dialog" aria-modal="true" aria-labelledby="langDialogTitle"
+        class="panel w-full max-w-md rounded-2xl bg-white shadow-xl border border-green-100 p-6 text-center">
+        <div class="mx-auto mb-4 h-14 w-14 rounded-full bg-green-50 ring-1 ring-green-100 flex items-center justify-center">
+          <img src="assets/images/logo.png" alt="Logo Arokiyam" class="h-10 w-10 object-contain" />
+        </div>
+        <h4 id="langDialogTitle" class="text-xl font-semibold text-green-800 mb-2" data-i18n="nav.language">Langue</h4>
+        <p class="text-sm text-slate-600 mb-5">Choisissez votre langue</p>
+        <div class="grid grid-cols-1 gap-3">
+          <button type="button" data-lang="fr"
+            class="px-4 py-3 rounded-xl border border-green-200 hover:bg-green-50 text-green-800 flex items-center justify-center gap-3">
+            <span class="text-2xl">🇫🇷</span><span class="text-base font-medium">Français</span>
+          </button>
+          <button type="button" data-lang="en"
+            class="px-4 py-3 rounded-xl border border-green-200 hover:bg-green-50 text-green-800 flex items-center justify-center gap-3">
+            <span class="text-2xl">🇬🇧</span><span class="text-base font-medium">English</span>
+          </button>
+          <button type="button" data-lang="ta"
+            class="px-4 py-3 rounded-xl border border-green-200 hover:bg-green-50 text-green-800 flex items-center justify-center gap-3">
+            <span class="text-2xl">🐅</span><span class="text-base font-medium">தமிழ்</span>
+          </button>
+        </div>
+        <div id="langConfirm" class="hidden mt-3">
+          <div class="mx-auto h-12 w-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center mb-3">✓</div>
+          <p id="langConfirmMsg" class="text-green-800 font-semibold"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Home Section -->
   <section id="home"
@@ -309,8 +350,8 @@
       <span class="floating-dot dot-d"></span>
       <span class="floating-dot dot-e"></span>
     </div>
-    <h2 class="text-4xl md:text-6xl font-extrabold mb-4 text-center text-green-800 reveal delay-1"
-      data-i18n="hero.title">Bienvenue sur le site d'Arokiyam pour toustes</h2>
+    <h2 class="text-5xl md:text-6xl font-extrabold mb-4 text-center text-green-800 reveal delay-1"
+      data-i18n="hero.title">Arokiyam pour toustes</h2>
     <p class="text-lg md:text-xl text-center max-w-3xl text-green-800 leading-relaxed reveal delay-2"
       data-i18n="hero.subtitle">Association dédiée à la solidarité, l'entraide et l'inclusion.</p>
     <p class="mt-4 text-center text-sm md:text-base text-green-700 max-w-2xl leading-relaxed reveal delay-3"
@@ -413,7 +454,7 @@
             <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
               <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-10">
                 <div class="w-full h-72 md:h-[420px] md:w-auto">
-                  <img src="assets/images/membres/suvetha.png" alt="Portrait de Suvetha Suthan"
+                  <img src="assets/images/membres/suvetha.jpg" alt="Portrait de Suvetha Suthan"
                     class="w-full h-full object-cover md:rounded-xl md:shadow-md md:ring-1 md:ring-green-200"
                     onerror="this.src='https://via.placeholder.com/500x600.png?text=Suvetha';">
                 </div>
@@ -551,8 +592,7 @@
   <section id="resources" class="py-20 px-6 bg-white">
     <div class="container mx-auto max-w-5xl">
       <h3 class="text-3xl font-bold mb-2 text-center text-green-800" data-i18n="resources.title">Ressources</h3>
-      <p class="text-center text-slate-700 leading-relaxed mb-6" data-i18n="resources.subtitle">Livret d'information et
-        documents utiles.</p>
+      <!-- Texte supprimé comme demandé -->
       <div class="relative overflow-hidden rounded-xl bg-white shadow ring-1 ring-green-100 hover-lift">
         <div class="absolute -left-10 -top-10 h-40 w-40 bg-green-100 rounded-full blur-2xl opacity-60 animate-drift">
         </div>
@@ -576,20 +616,15 @@
           <div class="p-4 flex items-center justify-between border-t border-green-100 bg-gray-50">
             <h5 class="text-lg font-semibold text-green-800" data-i18n="resources.viewer.title">Lecteur du livret</h5>
             <div class="flex items-center gap-3">
-              <button id="resZoomOutBtn" aria-label="Réduire le zoom"
-                class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50">−</button>
-              <span id="resZoomLabel" class="text-sm text-green-800">160%</span>
-              <button id="resZoomInBtn" aria-label="Augmenter le zoom"
-                class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50">+</button>
               <a id="resOpenPdfNewTab" href="assets/docs/livret_sante.pdf" target="_blank" rel="noopener"
                 class="px-2 py-1 rounded border border-green-200 text-green-800 hover:bg-green-50"
                 data-i18n="resources.viewer.openTab">Ouvrir</a>
             </div>
           </div>
           <div class="h-[80vh]">
-            <object id="resPdfFrame" data="assets/docs/livret_sante.pdf#page=1&zoom=160&view=FitH"
+            <object id="resPdfFrame" data="assets/docs/livret_sante.pdf#page=1&view=FitH"
               type="application/pdf" class="w-full h-full">
-              <embed src="assets/docs/livret_sante.pdf#page=1&zoom=160&view=FitH" type="application/pdf"
+              <embed src="assets/docs/livret_sante.pdf#page=1&view=FitH" type="application/pdf"
                 class="w-full h-full" />
               <p class="p-4 text-green-800">Votre navigateur ne peut pas afficher ce PDF. <a
                   href="assets/docs/livret_sante.pdf" target="_blank" rel="noopener" class="underline">Ouvrir le
@@ -802,6 +837,22 @@
                   prévention</p>
               </div>
             </article>
+            <!-- Intervenant 11 Silvin Sarva -->
+            <article class="carousel-slide w-full flex-shrink-0 grid md:grid-cols-2 bg-white">
+              <div class="order-first md:order-none md:flex items-center justify-center p-0 md:p-8">
+                <div class="w-full h-72 md:h-auto md:w-auto">
+                  <img src="assets/images/intervenants/silvin.png" alt="Portrait de Silvin Sarva"
+                    class="w-full h-full object-cover md:rounded-lg md:shadow-md md:ring-1 md:ring-green-200"
+                    onerror="this.src='https://via.placeholder.com/400x400.png?text=Silvin';">
+                </div>
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <h4 class="text-2xl font-semibold text-green-800" data-i18n="intervenants.items.silvin.name">Silvin
+                  Sarva</h4>
+                <p class="mt-2 text-green-700 font-medium" data-i18n="intervenants.items.silvin.role">Traiteur
+                  spécialisé en cuisine tamoule</p>
+              </div>
+            </article>
           </div>
         </div>
         <!-- Controls (intervenants) -->
@@ -822,6 +873,7 @@
           <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 8"></button>
           <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 9"></button>
           <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 10"></button>
+          <button class="dot h-2.5 w-2.5 rounded-full bg-green-300" aria-label="Aller à la diapo 11"></button>
         </div>
       </div>
     </div>
@@ -858,6 +910,112 @@
 
   <!-- Scripts: nav + carousel + i18n -->
   <script src="assets/js/app.js"></script>
+  <script>
+    // Modal de langue : ouverture/fermeture et sélection
+    document.addEventListener('DOMContentLoaded', () => {
+      const hidden = document.getElementById('langSwitcher');
+      const btn = document.getElementById('langMenuBtn');
+      const modal = document.getElementById('langModal');
+      const dialog = document.getElementById('langDialog');
+  const confirmBox = document.getElementById('langConfirm');
+  const confirmMsg = document.getElementById('langConfirmMsg');
+      if (!hidden || !btn || !modal || !dialog) return;
+
+      function updateLangIcon(fromLang) {
+        let lang = fromLang;
+        if (!lang) {
+          // priorité à l'attribut lang du html, sinon localStorage, sinon fr
+          lang = document.documentElement.getAttribute('lang') || localStorage.getItem('lang') || 'fr';
+        }
+        const icon = lang === 'fr' ? '🇫🇷' : lang === 'en' ? '🇬🇧' : '🐅';
+        const span = btn.querySelector('#langMenuIcon');
+        if (span) span.textContent = icon;
+      }
+
+      function setActiveItem(lang) {
+        menu.querySelectorAll('[data-lang]').forEach(item => {
+          const isActive = item.getAttribute('data-lang') === lang;
+          item.classList.toggle('bg-green-100', isActive);
+          item.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+      }
+
+      function openModal() {
+        modal.classList.remove('hidden');
+        // next frame pour permettre l'animation
+        requestAnimationFrame(() => modal.classList.add('open'));
+        btn.setAttribute('aria-expanded', 'true');
+        // focus initial sur le bouton de langue actuel
+        const current = (document.documentElement.getAttribute('lang') || localStorage.getItem('lang') || hidden.value || 'fr');
+        setActiveItem(current);
+        const first = dialog.querySelector(`[data-lang="${current}"]`) || dialog.querySelector('[data-lang]');
+        first && first.focus({ preventScroll: true });
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        // attendre la fin de la transition avant de cacher
+        setTimeout(() => modal.classList.add('hidden'), 200);
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus({ preventScroll: true });
+      }
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+      // Fermer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+      modal.addEventListener('click', (e) => {
+        // fermer si on clique sur l'overlay (pas dans le dialog)
+        const isOverlay = e.target.classList && e.target.classList.contains('overlay');
+        if (isOverlay) closeModal();
+      });
+      // Sélection langue -> propage au select caché pour app.js
+      dialog.querySelectorAll('[data-lang]').forEach(item => {
+        item.setAttribute('tabindex', '0');
+        item.addEventListener('click', () => {
+          const lang = item.getAttribute('data-lang');
+          hidden.value = lang;
+          hidden.dispatchEvent(new Event('change', { bubbles: true }));
+          updateLangIcon(lang);
+          setActiveItem(lang);
+          // Affiche une confirmation douce
+          if (confirmBox && confirmMsg) {
+            const txt = lang === 'fr' ? 'Langue mise à jour' : lang === 'en' ? 'Language updated' : 'மொழி புதுப்பிக்கப்பட்டது';
+            confirmMsg.textContent = txt;
+            confirmBox.classList.remove('hidden');
+            // Fermer automatiquement après un court délai
+            setTimeout(() => {
+              confirmBox.classList.add('hidden');
+              closeModal();
+            }, 900);
+          } else {
+            closeModal();
+          }
+        });
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.click();
+          }
+        });
+      });
+      // Observer les changements d'attribut lang sur <html> pour rester synchronisé
+      const obs = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+          if (m.type === 'attributes' && m.attributeName === 'lang') {
+            updateLangIcon();
+            break;
+          }
+        }
+      });
+      try { obs.observe(document.documentElement, { attributes: true }); } catch {}
+      // Initialisation
+      updateLangIcon();
+      setActiveItem(document.documentElement.getAttribute('lang') || localStorage.getItem('lang') || hidden.value || 'fr');
+    });
+  </script>
 
 </body>
 
