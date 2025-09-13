@@ -204,10 +204,32 @@
     }
 
     /* Lang modal animations */
-    #langModal .overlay { opacity: 0; transition: opacity .25s ease; }
-    #langModal.open .overlay { opacity: 1; }
-    #langModal .panel { transform: scale(0.96); opacity: 0; transition: transform .25s ease, opacity .25s ease; }
-    #langModal.open .panel { transform: scale(1); opacity: 1; }
+    #langModal .overlay { 
+      opacity: 0; 
+      transition: opacity .3s ease; 
+      backdrop-filter: blur(4px);
+    }
+    #langModal.open .overlay { 
+      opacity: 1; 
+    }
+    #langModal .panel { 
+      transform: scale(0.9) translateY(20px); 
+      opacity: 0; 
+      transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity .3s ease; 
+    }
+    #langModal.open .panel { 
+      transform: scale(1) translateY(0); 
+      opacity: 1; 
+    }
+
+    /* Animation for language selection confirmation */
+    #langConfirm {
+      transform: scale(0.8);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    #langConfirm:not(.hidden) {
+      transform: scale(1);
+    }
   </style>
 </head>
 
@@ -350,7 +372,7 @@
       <span class="floating-dot dot-d"></span>
       <span class="floating-dot dot-e"></span>
     </div>
-    <h2 class="text-5xl md:text-6xl font-extrabold mb-4 text-center text-green-800 reveal delay-1"
+    <h2 class="text-6xl md:text-7xl font-extrabold mb-4 text-center text-green-800 reveal delay-1"
       data-i18n="hero.title">Arokiyam pour toustes</h2>
     <p class="text-lg md:text-xl text-center max-w-3xl text-green-800 leading-relaxed reveal delay-2"
       data-i18n="hero.subtitle">Association dédiée à la solidarité, l'entraide et l'inclusion.</p>
@@ -933,7 +955,7 @@
       }
 
       function setActiveItem(lang) {
-        menu.querySelectorAll('[data-lang]').forEach(item => {
+        dialog.querySelectorAll('[data-lang]').forEach(item => {
           const isActive = item.getAttribute('data-lang') === lang;
           item.classList.toggle('bg-green-100', isActive);
           item.setAttribute('aria-current', isActive ? 'true' : 'false');
@@ -954,7 +976,7 @@
       function closeModal() {
         modal.classList.remove('open');
         // attendre la fin de la transition avant de cacher
-        setTimeout(() => modal.classList.add('hidden'), 200);
+        setTimeout(() => modal.classList.add('hidden'), 300);
         btn.setAttribute('aria-expanded', 'false');
         btn.focus({ preventScroll: true });
       }
@@ -985,13 +1007,14 @@
             const txt = lang === 'fr' ? 'Langue mise à jour' : lang === 'en' ? 'Language updated' : 'மொழி புதுப்பிக்கப்பட்டது';
             confirmMsg.textContent = txt;
             confirmBox.classList.remove('hidden');
-            // Fermer automatiquement après un court délai
+            // Fermer automatiquement après un court délai avec animation améliorée
             setTimeout(() => {
               confirmBox.classList.add('hidden');
-              closeModal();
-            }, 900);
+              setTimeout(closeModal, 200);
+            }, 1200);
           } else {
-            closeModal();
+            // Fermer avec animation si pas de confirmation
+            setTimeout(closeModal, 500);
           }
         });
         item.addEventListener('keydown', (e) => {
